@@ -116,10 +116,10 @@ const Homepage = () => {
             </div>
         </div>
         <div className='flex justify-center bg-black'>
-            <div className='text-center text-yellow-500 text-[14px]'>
+            <div className='text-center text-yellow-700 text-[14px]'>
                 <div className='mb-8'>
-                    <p className='text-[22px] text-yellow-700'>Be the vanguard of the</p>
-                    <h3 className='font-bold text-[40px]'>Moviegoers</h3>
+                    <p className='text-[22px] '>Be the vanguard of the</p>
+                    <h3 className='text-yellow-500 font-bold text-[40px]'>Moviegoers</h3>
                 </div>
                 <div className='mb-8'>
                     <form  action="">

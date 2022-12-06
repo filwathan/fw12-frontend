@@ -1,7 +1,7 @@
 import React from 'react'
 const Footer = () => {
   return (
-    <footer className='flex-col pt-24 px-28 pb-12 text-yellow-500 bg-black'>
+    <footer className='flex-col pt-24 px-28 pb-12 text-yellow-700 bg-black'>
         <div className='flex'>
             <div className='flex-1 text-base leading-8 tracking-wide mr-8'>
                 <div className='mb-7'>
@@ -11,12 +11,12 @@ const Footer = () => {
                 <p className=''>conveniently, watch movies quietly.</p>
             </div>
             <div className='flex-1'>
-                <div className='font-bold mb-7 '>Explore</div>
+                <div className='text-yellow-500  font-bold mb-7 '>Explore</div>
                 <p className='mb-3.5'>Home</p>
                 <p className=''>List Movie</p>
             </div>
             <div className='flex-1'>
-                <div className='font-bold mb-7 '>Our Sponsor</div>                
+                <div className='text-yellow-500  font-bold mb-7 '>Our Sponsor</div>                
                 <div className='mb-6'>
                     <img src={require('../asset/images/logo-ebuid1.png')} alt="ebuid"/>
                 </div>
@@ -28,7 +28,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className='flex-1'>
-                <div className='font-bold mb-7 '>Follow us</div>                
+                <div className='text-yellow-500 font-bold mb-7 '>Follow us</div>                
                 <div className='mb-6'>
                     <i data-feather="facebook">i</i>
                     <span>Tickitz Cinema id</span>
