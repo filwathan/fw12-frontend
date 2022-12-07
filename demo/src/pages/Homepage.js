@@ -1,12 +1,27 @@
-import React from 'react'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+
 
 const Homepage = () => {
-  return (
+    const [nowShowing, setNowShowing] = React.useState({});
+    React.useEffect(()=>{
+        getNowShowing().then((data) =>{
+            setNowShowing(data)
+        })
+    },[])
+
+    const getNowShowing = async () =>{
+        const {data} = await axios.get('http://localhost:8888/movies/nowShowingMovie');
+        return data
+    }
+
+
+  return (<>
     <div className='h-screen'>
-        <div> <Header></Header> </div>        
+        <div> <Header></Header> </div>
         <div className='flex  items-center  py-16 px-28 bg-black'>
             <div className='flex flex-1 justify-center'>
                 <div className=''>
@@ -72,8 +87,19 @@ const Homepage = () => {
                 <button className='border-2 border-yellow-500 rounded-lg py-2 px-5 mr-3'>July</button>
                 <button className='border-2 border-yellow-500 rounded-lg py-2 px-5 mr-3'>august</button>
             </div>
+            {/* trying fetch from backend */}
             <div className='flex overflow-x-auto text-yellow-500 '>
-                <div className='flex-1 flex flex-col items-center border-2 border-zinc-900 rounded-lg p-8 mr-6 w-[220px] h-[450]'>
+                {nowShowing?.results?.map((film) =>(
+                    <div className='flex-1 flex flex-col items-center border-2 border-zinc-900 rounded-lg p-8 mr-6'>
+                    <img className='mb-6' src={"http://localhost:8888/assets/uploads/".concat(film.picture)} alt="The Witchec"/>
+                    <h4 className='font-bold text-[18px] mb-2'> {film.titleMovie}</h4>
+                    <p className='text-[14px] text-center mb-6 h-[50px]'>{film.genre}</p>
+                    <Link to='/'>
+                        <button className='border-2 border-yellow-500 rounded-lg py-1 px-9'>Details</button>
+                    </Link>
+                    </div>
+                ))}
+                {/* <div className='flex-1 flex flex-col items-center border-2 border-zinc-900 rounded-lg p-8 mr-6 w-[220px] h-[450]'>
                     <img className='mb-6' src={require('../asset/images/spiderman.png')} alt="Black Widow"/>
                     <h4 className='font-bold text-[18px] mb-2'>Black Widow</h4>
                     <p className='text-[14px] text-center mb-6 h-[50px]'>Action, Adventure, Sci-Fi</p>
@@ -112,9 +138,10 @@ const Homepage = () => {
                     <Link to='/'>
                         <button className='border-2 border-yellow-500 rounded-lg py-1 px-9'>Details</button>
                     </Link>
-                </div>
+                </div> */}
             </div>
         </div>
+        {/* ended trying fetch from backend */}
         <div className='flex justify-center bg-black'>
             <div className='text-center text-yellow-700 text-[14px]'>
                 <div className='mb-8'>
@@ -134,7 +161,7 @@ const Homepage = () => {
             </div>
         </div>
         <div> <Footer></Footer> </div>
-    </div>
+    </div></>
   )
 }
 
