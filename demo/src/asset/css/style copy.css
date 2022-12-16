@@ -144,15 +144,15 @@
 }
 
 .upcoming-list div{ 
-@apply w-36 flex flex-col pt-8 pr-8 pb-8 pl-8 content-center justify-center text-center bg-black border-2  border-solid border-zinc-900 rounded-lg mr-6 ;
+@apply w-[150PX] flex flex-col pt-8 pr-8 pb-8 pl-8 content-center justify-center text-center bg-black border-2  border-solid border-zinc-900 rounded-lg mr-6 ;
 }
 
 .upcoming-list h4{ 
-@apply font-bold text-[18px] text-center text-yellow-500 mt-6 mr-0 mb-3 ml-0 ;
+@apply    font-bold text-[18px] text-center text-yellow-700 mt-6 mr-0 mb-3 ml-0 ;
 }
 
 .upcoming-list p{ 
-@apply   font-normal text-[12px] text-center text-yellow-700 mt-0 mr-0 mb-10 ml-0 ;
+@apply   font-normal text-[12px] text-center bg-zinc-900 mt-0 mr-0 mb-10 ml-0 ;
 }
 
 .upcoming-list button{ 
@@ -184,7 +184,7 @@
 }
 
 .form-invitation button{ 
-@apply bg-yellow-500 rounded border-0   font-bold text-[14px]  text-center  text-black h-[55px] w-[100px] ;
+@apply bg-yellow-500 rounded border-w-[0px]   font-bold text-[14px]  text-center  text-black h-[55px] w-[100px] ;
 }
 
 .card-invitation div:nth-child(2){ 
@@ -202,7 +202,7 @@
 }
 
 .footer-overlay h6{ 
-@apply text-[16px] text-yellow-500 mt-0 mr-0 mb-7 ml-0 ;
+@apply text-[16px] color: black mt-0 mr-0 mb-7 ml-0 ;
 }
 
 .footer-overlay div{ 
@@ -214,10 +214,10 @@
 }
 
 .footer-overlay .footer-section-one{ 
-@apply flex-1 ;
+@apply flex-2 ;
 }
 .footer-overlay .footer-section-one img{ 
-@apply h-[43px] w-[170px] mb-7 ;
+@apply h-[43px] w-[170px] mb-29px ;
 }
 
 .footer-section-one p{ 
@@ -229,18 +229,18 @@
 }
 
 .footer-section-three img{ 
-@apply block h-[44px] w-[120px] mt-0 mr-0 mb-6 ml-0  ;
+@apply display: block h-[44px] w-[120px] mt-0 mr-0 mb-6 ml-0  ;
 }
 
 .footer-section-four div{ 
-@apply items-center mb-4 ;
+@apply items-center mb-15px ;
 }
 .footer-section-four div svg{ 
 @apply w-[20px] h-[20px] ;
 }
 
 .footer-section-four div span{ 
-@apply text-[14px] ml-5 ;
+@apply text-[14px] ml-22px ;
 }
 .footer-copyright{ 
 @apply justify-center    font-normal text-[14px]  text-yellow-700 mt-16 mr-0 mb-0 ml-0  ;
@@ -250,11 +250,12 @@
 
 /* View All Page */
 .list-movie{ 
+@apply 
 @apply bg-zinc-900 pt-24 /* p-[100px 0 0px 0 */ /* m-0 0 0px 0 */ ;
 }
 
 .list-movie .sort-list-movie{ 
-@apply mr-3;
+@apply mr-12px ;
 }
 
 .list-movie .sort-list-movie select{ 
@@ -266,23 +267,23 @@
 }
 
 .upcoming-list.movie-list{ 
-@apply pt-11 pr-20 pb-16 pl-16 bg-black mt-0 mr-32 mb-0 ml-32 flex flex-wrap overflow-x-hidden ;
+@apply pt-11 pr-20 pb-16 pl-16 bg-black mt-0 mr-32 mb-0 ml-32 flex flex-wrap  ;
 }
 
 .upcoming-list.movie-list div{ 
-@apply flex p-8 border-2 border-solid border-yellow-700 rounded-lg mr-2.5 mt-6 w-56;
+@apply flex p-[32px] border-2 border-solid border-yellow-700 rounded-lg mr-2.5 mt-15px ;
 }
 
 .upcoming-list.movie-list div img{ 
-@apply w-40 h-60;
+@apply w-[100%] h-[240px] ;
 }
 
 .number-page{ 
-@apply flex justify-center mt-9 mr-0 mb-14 ml-0 text-yellow-500;
+@apply flex justify-center mt-9 mr-0 mb-14 ml-0 ;
 }
 
 .number-page div{ 
-@apply flex bg-black border-2 border-solid border-yellow-700 rounded-lg w-[40px] h-[40px] justify-center items-center mt-0 mr-2 mb-11 ml-0 ;
+@apply flex bg-black border-2 border-solid border-yellow-700 rounded-lg w-[40px] h-[40px] justify-center items-center margin:0 8px 45px 0       ;
 }
 /* end page View all */
 
@@ -293,7 +294,7 @@
 }
 
 .details-movie .border-img{ 
-@apply mr-14 p-[45px] border-2 border-solid border-yellow-700 rounded-2xl ;
+@apply mr-59px p-[45px] border-2 border-solid border-yellow-700 rounded-2xl ;
 }
 
 .details-movie .border-img img{ 
@@ -309,7 +310,7 @@
 }
 
 .title-genre h3{ 
-@apply mt-0 mr-0 mb-2 ml-0   text-[32px] font-bold text-yellow-700 ;
+@apply mt-0 mr-0 mb-2 ml-0   text-[32px]px font-bold text-yellow-700 ;
 }
 
 .title-genre span{ 
@@ -325,18 +326,18 @@
 }
 
 .overlay-details .details span{ 
-@apply text-[14px] text-yellow-500;
+@apply text-[14px] color: #8692A6 ;
 }
 
 .overlay-details .details p{ 
-@apply mt-1 mr-0 mb-4 ml-0  text-[16px] text-yellow-500;
+@apply mt-1 mr-0 mb-4 ml-0  text-[16px] color: #121212 ;
 }
 .br-full{ 
 @apply h-[0px] w-[100%] border-2 border-solid border-yellow-700 ;
 }
 
 .overlay-details .synopsis h4{ 
-@apply mt-4 mr-0 mb-0 ml-0  text-yellow-500 text-[20px] ;
+@apply mt-4 mr-0 mb-0 ml-0  color: #000000 text-[20px] ;
 }
 
 .overlay-details .synopsis p{ 
@@ -344,7 +345,7 @@
 }
 
 .overlay-showtimes-tickets{ 
-@apply bg-zinc-900   text-yellow-700 p-[70px] ;
+@apply    text-yellow-700 p-[70px] ;
 }
 
 .header-show-tickets{ 
@@ -352,15 +353,15 @@
 }
 
 .header-show-tickets h3{ 
-@apply text-yellow-700 text-[24px] mt-0 mr-0 mb-10 ml-0  ;
+@apply text-yellow-700 text-[24px]mt-0 mr-0 mb-10 ml-0  ;
 }
 
 .header-show-tickets input{ 
-@apply bg-zinc-900 rounded-[6px] border-2 w-[284px] h-[22px] pt-1 pr-5 pb-1 pl-5 text-yellow-700 text-[16px] ;
+@apply background: #EFF0F6 rounded6px border-2 w-[284px] h-[22px] pt-1 pr-5 pb-1 pl-5 text-yellow-700 text-[16px] ;
 }
 
 .header-show-tickets select{ 
-@apply bg-zinc-900 rounded-[6px] w-[284px] h-[34px] pt-1 pr-5 pb-1 pl-5 text-yellow-700 text-[16px] ;
+@apply background: #EFF0F6 rounded6px w-[284px] h-[34px] pt-1 pr-5 pb-1 pl-5 text-yellow-700 text-[16px] ;
 }
 
 .overlay-tickets{ 
@@ -388,11 +389,11 @@
 }
 
 .bracnd-ticket img{ 
-@apply h-[40px] w-[105px];
+@apply h-[40px] w-[105px ];
 }
 
 .bracnd-ticket h3{ 
-@apply mt-5 mr-0 mb-1 ml-0  text-yellow-500 text-[30px] ;
+@apply mt-5 mr-0 mb-1 ml-0  color: #000000 text-[30px] ;
 }
 
 .bracnd-ticket p{ 
@@ -400,7 +401,7 @@
 }
 
 .times{ 
-@apply     text-yellow-700 text-[12px] font-bold pt-4 pr-7 pb-0 pl-7  grid-cols-4 gap-x-1 gap-y-4 /* display: grid grid-template-columns: repeat(4, 25%) grid-gap: 5px 16px */ ;
+@apply     text-yellow-700 text-[12px] font-bold pt-4 pr-7 pb-0 pl-7  display: grid grid-template-columns: repeat(4, 25%) grid-gap: 5px 16px ;
 }
 
 .price{ 
@@ -412,7 +413,7 @@
 }
 
 .price div:nth-child(2){ 
-@apply text-[16px] text-yellow-500 font-bold ;
+@apply text-[16px] color: #000000 font-bold ;
 }
 
 .overlay-btn{ 
@@ -420,7 +421,7 @@
 }
 
 .btn-booking{ 
-@apply bg-yellow-500 text-black text-[14px] w-[100%] h-[40px] rounded-[5px] border-2 border-yellow-700;
+@apply bg-yellow-500 color: #F7F7FC text-[14px] w-[100%] h-[40px] rounded5px border-2 ;
 }
 
 .more{ 
@@ -432,7 +433,7 @@
 /* start order page  */
 
 .main-overlay{ 
-@apply bg-zinc-900 flex pt-16 pr-16 pb-16 pl-16  text-yellow-700  ;
+@apply bg-black flex pt-16 pr-16 pb-16 pl-16  text-yellow-700  ;
 }
 
 .title-instructure{ 
@@ -440,11 +441,11 @@
 }
 
 .left-than-right{ 
-@apply flex-[0.7] mr-6 ;
+@apply flex-0.7 mr-6 ;
 }
 
 .right-than-left{ 
-@apply flex-[0.3] ;
+@apply flex-0.3 ;
 }
 
 .title-film{ 
@@ -452,7 +453,7 @@
 }
 
 .title-film div:nth-child(1){ 
-@apply flex-1 text-yellow-500 font-bold ;
+@apply flex-1 color: #000000 font-bold ;
 }
 
 .btn-change-movie{ 
@@ -471,7 +472,7 @@
 }
 
 .brand-order-info div:nth-child(2){ 
-@apply text-[24px] text-yellow-700 font-bold /* m-13px 0 30px 0 */ ;
+@apply text-[24px]px text-yellow-700 font-bold /* m-13px 0 30px 0 */ ;
 }
 
 .detail-orader-info{ 
@@ -479,11 +480,11 @@
 }
 
 .detail-orader-info>div{ 
-@apply flex mb-4 ;
+@apply flex mb-16px ;
 }
 
 .detail-orader-info>div p{ 
-@apply flex-1 text-yellow-500 text-[14px] font-normal mt-0 mr-0 mb-0 ml-0   ;
+@apply flex- 1 color: #6B6B6B text-[14px] font-normal mt-0 mr-0 mb-0 ml-0   ;
 }
 
 .detail-orader-info>div div{ 
@@ -495,7 +496,7 @@
 }
 
 .total-payment-order div:nth-child(1){ 
-@apply flex-1 text-yellow-500 text-[18px] font-bold ;
+@apply flex-1 color: #000000 text-[18px] font-bold ;
 }
 
 .total-payment-order div:nth-child(2){ 
@@ -514,35 +515,22 @@
 @apply border-8 rounded mt-2 mr-0 mb-0 ml-0 ;
 }
 
-/* .grid-seat{ 
-@apply mt-6 mr-0 mb-8 ml-0  flex text-[14px] ;
-}
-
-.left-grid-seat{ 
-@apply  flex-1 grid grid-cols-8 auto-rows-max gap-1 display: grid grid-template-columns: repeat(8, 30px)  grid-template-rows: repeat(8, 30px) gap: 5px     ;
-} 
-
-.right-grid-seat{ 
-@apply justify-end grid grid-cols-7 auto-rows-max gap-1 display: grid grid-template-columns: repeat(7, 30px)  grid-template-rows: repeat(8, 30px) gap: 5px    ;
-}  */
-
 .grid-seat{ 
 @apply mt-6 mr-0 mb-8 ml-0  flex text-[14px] ;
 }
 
 .left-grid-seat{ 
-@apply flex-1  grid grid-cols-[30px_30px_30px_30px_30px_30px_30px_30px] gap-1 /* display: grid grid-template-columns: repeat(8, 30px)  grid-template-rows: repeat(8, 30px) gap: 5px   */  ;
+@apply     flex-1 display: grid grid-template-columns: repeat(8, 30px)  grid-template-rows: repeat(8, 30px) gap: 5px     ;
 } 
-
 .right-grid-seat{ 
-@apply justify-end grid grid-cols-[30px_30px_30px_30px_30px_30px_30px] grid-rows-[30px_30px_30px_30px_30px_30px_30px_30px] gap-1 /* display: grid grid-template-columns: repeat(7, 30px)  grid-template-rows: repeat(8, 30px) gap: 5px   */  ;
+@apply justify-content: flex-end display: grid grid-template-columns: repeat(7, 30px)  grid-template-rows: repeat(8, 30px) gap: 5px     ;
 } 
 
 .left-grid-seat>div{ 
-@apply bg-zinc-900 hover:bg-yellow-500 rounded text-yellow-500 ;
+@apply background: #D6D8E7 rounded text-yellow-500 ;
 }
 .right-grid-seat>div{ 
-@apply bg-zinc-900 hover:bg-yellow-500 rounded text-yellow-500 ;
+@apply background: #D6D8E7 rounded text-yellow-500 ;
 }
 
 .grid-seat .seat-name{ 
@@ -550,7 +538,7 @@
 }
 
 .seating-key{ 
-@apply text-yellow-500 text-[25px] font-bold mb-5 ;
+@apply color: #000000 text-[25px] font-bold mb-20px ;
 }
 
 .legend-seating-key{ 
@@ -562,11 +550,11 @@
 }
 
 .legend-seating-key>div>div{ 
-@apply w-[30px] h-[30px]    mr-4 ;
+@apply w-[30px] h-[30px ]    mr-4 ;
 }
 
 .legend-seating-key>div:nth-child(1)>div{ 
-@apply bg-zinc-900 rounded     ;
+@apply background: #D6D8E7 rounded     ;
 }
 
 .legend-seating-key>div:nth-child(2)>div{ 
@@ -574,11 +562,11 @@
 }
 
 .legend-seating-key>div:nth-child(3)>div{ 
-@apply bg-zinc-900 rounded     ;
+@apply background: #6E7191 rounded     ;
 }
 
 .overlay-btn-order{ 
-@apply flex mt-10;
+@apply flex mt-40px ;
 }
 
 .btn-checkout-order{ 
@@ -586,7 +574,7 @@
 }
 
 .btn-checkout-order:hover{ 
-@apply bg-yellow-500 text-black ;
+@apply background-text-yellow-500 text-black ;
 }
 
 .overlay-btn-order>div:nth-child(1){ 
@@ -597,7 +585,7 @@
 
 /* start  payment page*/
 .payment-info{ 
-@apply bg-black flex flex-col pt-9 pr-12 pb-9 pl-12 rounded-[6px] text-yellow-700  text-[20px] ;
+@apply bg-black flex flex-col pt-9 pr-12 pb-9 pl-12 rounded6px text-yellow-700  text-[20px]px ;
 }
 
 .payment-info>div{ 
@@ -609,11 +597,11 @@
 }
 
 .payment-info>div>div:nth-child(2){ 
-@apply text-yellow-500 text-[20px] ;
+@apply color: #000000 text-[20px]px ;
 }
 
 .payment-brand{ 
-@apply grid grid-cols-4 grid-rows-2 gap-6 /* display: grid grid-template-columns: repeat(4, 1fr)  grid-template-rows: repeat(2, 40%) gap: 25px */ ;
+@apply display: grid grid-template-columns: repeat(4, 1fr)  grid-template-rows: repeat(2, 40%) gap: 25px  ;
 }
 
 .brand-border{ 
@@ -621,15 +609,15 @@
 }
 
 .payment-info div:nth-last-child(1) .total-price-payment{ 
-@apply text-[24px] font-bold ;
+@apply text-[24px]px font-bold ;
 }
 
 .additional-main{ 
-@apply mt-12 ;
+@apply mt-50px ;
 }
 
 .middle-br{ 
-@apply relative text-center ;
+@apply position: relative text-center ;
 }
 
 .via-cash{ 
@@ -649,11 +637,11 @@
 }
 
 .personal-info form >div input{ 
-@apply border-2  border-solid border-yellow-700 rounded mt-3.5 mr-0 mb-8 ml-0  text-[16px] pt-5 pr-8 pb-5 pl-8  w-full h-[30px] ;
+@apply border-2  border-solid border-yellow-700 rounded mt-3.5 mr-0 mb-8 ml-0  text-[18px] pt-5 pr-8 pb-5 pl-8  ;
 }
 
 .validation-notif{ 
-@apply flex /* justify-center */ items-center bg-zinc-900/30 rounded pt-6 pr-8 pb-6 pl-8 ;
+@apply flex /* justify-center */ items-center background: rgba(244, 183, 64, 0.3) rounded pt-6 pr-8 pb-6 pl-8 ;
 }
 
 /* end payment page */
@@ -661,11 +649,11 @@
 /* start profil page */
 
 .main-overlay.right-more{ 
-@apply flex-row-reverse ;
+@apply flex-direction: row-reverse ;
 }
 
 .right-than-left.right-more{ 
-@apply flex-[0.3]     mr-6 ;
+@apply flex-0.3     mr-6 ;
 }
 
 .overlay-white{ 
@@ -677,7 +665,7 @@
 
 
 .tab-page.overlay-white{ 
-@apply pt-6 pr-8 pb-6 pl-8 flex text-yellow-700 text-[18px] font-normal mb-12 ;
+@apply pt-6 pr-8 pb-6 pl-8 flex text-yellow-700 text-[18px] font-normal mb-48px ;
 }
 
 .tab-page.overlay-white>a{ 
@@ -717,7 +705,7 @@
 }
 
 .update-details-information{ 
-@apply text-black bg-yellow-500 rounded-2xl w-[360px] h-[50px] border-0 mt-4 mr-0 mb-5 ml-0 ;
+@apply color: #F7F7FC bg-yellow-500 rounded-2xl w-[360px] h-[50px] border-0 mt-4 mr-0 mb-5 ml-0 ;
 }
 
 .side-profil>div:nth-child(1){ 
@@ -725,7 +713,7 @@
 }
 
 .profil-info{ 
-@apply text-center mt-8;
+@apply text-center mt-32px ;
 }
 
 .profil-info div:nth-child(1) img{ 
@@ -733,23 +721,23 @@
 }
 
 .profil-info div:nth-child(2){ 
-@apply text-[20px] font-bold mt-8 mr-0 mb-1 ml-0 ;
+@apply text-[20px]px font-bold mt-8 mr-0 mb-1 ml-0 ;
 }
 .profil-info div:nth-child(3){ 
-@apply text-yellow-700 text-[14px] font-normal mb-10 ;
+@apply text-yellow-700 text-[14px] font-normal mb-40px ;
 }
 .profil-btn-logout{ 
 @apply text-center mt-5 mr-0 mb-0 ml-0 ;
 }
 .btn-logout{ 
-@apply text-black font-bold text-[16px] bg-yellow-500 rounded-2xl w-[187px] h-[56px] border-0 ;
+@apply color: #F7F7FC font-bold text-[16px] bg-yellow-500 rounded-2xl w-[187px] h-[56px] border-0 ;
 }
 /* end page profil */
 
 /* start page order history */
 
 .history-order{ 
-@apply mb-6 ;
+@apply mb-24px ;
 }
 
 .history-order>div{ 
@@ -771,7 +759,7 @@
 @apply text-zinc-900 text-[14px] ;
 }
 .history-film>div:nth-child(1)>div:nth-child(2){ 
-@apply text-yellow-500 font-bold text-[24px] ;
+@apply color: #000000 font-bold text-[24px] ;
 }
 
 .btn-history>div:nth-child(1){ 
@@ -795,25 +783,25 @@
 /* start ticket result page */
 
 .overlay-ticket-result{ 
-@apply pt-44 pr-48 pb-44 pl-48 bg-zinc-900;
+@apply pt-44 pr-48 pb-44 pl-48 ;
 }
 
 .ticket-result>div:nth-child(1){ 
-@apply font-bold text-[24px] text-center mb-12 text-yellow-500;
+@apply font-bold text-[24px]px text-center mb-50px ;
 }
 
 .overlay-ticket{ 
 @apply flex ;
 }
 .left-side-ticket{ 
-@apply flex-1;
+@apply flex-1 ;
 }
 .right-side-ticket{ 
-@apply flex flex-col border-l-2 /* border-left-2 */ border-dashed border-zinc-900 ;
+@apply flex flex-col border-left-2 border-dashed border-zinc-900 ;
 }
 
 .header-ticket{ 
-@apply bg-yellow-500 flex text-black pt-6 pr-14 pb-6 pl-14 items-center rounded ;
+@apply background-text-yellow-500 flex text-black pt-6 pr-14 pb-6 pl-14 items-center rounded ;
 }
 
 .header-ticket>div:nth-child(1){ 
@@ -830,18 +818,18 @@
 
 .detail-ticket>div{ 
 @apply flex-1 ;
-} 
+}
 
 .detail-ticket>div>div:nth-child(1){ 
-@apply font-normal text-[12px] text-yellow-700;
+@apply font-normal text-[12px] text-zinc-900 ;
 }
 
 .detail-ticket>div>div:nth-child(2){ 
-@apply font-bold text-[16px] text-yellow-500 ;
+@apply font-bold text-[16px] text-yellow-700 ;
 }
 
 .detail-ticket .price-detail-ticket>div:nth-child(2){ 
-@apply font-bold text-[24px] ;
+@apply font-bold text-[24px]px ;
 }
 
 .overlay-qr{ 

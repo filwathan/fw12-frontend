@@ -1,6 +1,28 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 const ResetPassword = () => {
+    const navigate = useNavigate()
+    
+    const resetPassword = (event) =>{
+        event.preventDefault()
+        const passwordForm = event.target.password.value
+        const confirmPasswordForm = event.target.confirmPassword.value
+        const codeForm = 123
+
+        const resetPasswordForm = async ()=>{
+            await axios.post('http://localhost:8888/auth/register', {                
+                password: passwordForm,
+                confirmPassword: confirmPasswordForm,
+                code: codeForm,
+            })
+        }
+
+        resetPasswordForm()
+        navigate('/signin')
+    }
+    
   return (
     <div className='h-screen flex'>
             <div className="flex-[0.7] flex  bg-logo-sign bg-cover text-black ">           
@@ -31,13 +53,13 @@ const ResetPassword = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex-[0.3] px-20 py-12 text-yellow-700 bg-black">
+            <div className="flex-[0.3] px-20 py-12 text-yellow-700 bg-black overflow-scroll overflow-x-hidden">
                 <div className='pt-12 mb-10' id="notice-form-head">
                     <h3 className='text-yellow-500 text-[26px] font-bold mb-2' >Fill your complete password</h3>
                     <p>set your new password</p>
                     <div className='hidden' id="notif-signup">password and confirm password must same</div>
                 </div>
-                <form className='mb-8' id="form-signin" >                   
+                <form onSubmit={resetPassword} className='mb-8' id="form-signin" >                   
                     <div className='flex flex-col mb-8'>
                         <label className='mb-2.5 text-yellow-500' for="password">Password</label>
                         <input className='p-2 rounded-md text-black' type="password" name="password" id="password" placeholder="Write your password"/>

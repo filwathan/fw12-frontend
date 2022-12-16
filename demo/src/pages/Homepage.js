@@ -18,6 +18,18 @@ const Homepage = () => {
         return data
     }
 
+    const [upcoming, setUpcoming] = React.useState({});
+    React.useEffect(()=>{
+        getUpcoming().then((data) =>{
+            setUpcoming(data)
+        })
+    },[])
+
+    const getUpcoming = async () =>{
+        const {data} = await axios.get('http://localhost:8888/movies/upcomingMovie');
+        return data
+    }
+
 
   return (<>
     <div className='h-screen'>
@@ -42,25 +54,22 @@ const Homepage = () => {
                 </div>
                 <div className='flex-1'></div>
                 <div className='text-yellow-500'>
-                    <Link to='/' >view all</Link>
+                    <Link to='/viewall' >view all</Link>
                 </div>
             </div>
-            <div className='flex'>
-                <div className='border-2 border-black p-8 rounded-lg mr-6'>
-                    <img src={require('../asset/images/spiderman.png')} alt="Spiderman"/>
-                </div>
-                <div className='border-2 border-black p-8 rounded-lg mr-6'>
-                    <img src={require('../asset/images/lion-king.png')} alt="lion-king"/>
-                </div>
-                <div className='border-2 border-black p-8 rounded-lg mr-6'>
-                    <img src={require('../asset/images/john-wick-3.png')} alt="john-wick-3"/>
-                </div>
-                <div className='border-2 border-black p-8 rounded-lg mr-6'>
-                    <img src={require('../asset/images/spiderman.png')} alt="Spiderman"/>
-                </div>
-                <div className='border-2 border-black p-8 rounded-lg mr-6'>
-                    <img src={require('../asset/images/lion-king.png')} alt="lion-king"/>
-                </div>
+            <div className='flex text-yellow-500 text-center'>                
+                {nowShowing?.results?.map((film) =>(
+                    <div className='group/upcoming border-2 border-black p-8 rounded-lg mr-6 '>
+                        <img className='w-40 h-60' src={"http://localhost:8888/assets/uploads/".concat(film.picture)} alt="The Witchec"/>
+                        <div className='hidden group-hover/upcoming:block group-hover/upcoming:static'>
+                            <h4 className='font-bold text-[18px] mb-2'> {film.titleMovie}</h4>
+                            <p className='text-[14px] text-center mb-6 h-[50px]'>{film.genre}</p>
+                            <Link to='/'>
+                                <button className='border-2 border-yellow-500 rounded-lg py-1 px-9'>Details</button>
+                            </Link>
+                        </div>
+                    </div>
+                ))}                
             </div>
         </div>
         <div className='bg-black py-16 px-28 '>
@@ -70,7 +79,7 @@ const Homepage = () => {
                 </div>
                 <div className='flex-1'></div>
                 <div className='text-yellow-500'>
-                    <Link to='/' >view all</Link>
+                    <Link to='/viewall' >view all</Link>
                 </div>
             </div>
             <div className='flex overflow-x-auto text-yellow-500 mb-12'>
@@ -89,10 +98,10 @@ const Homepage = () => {
             </div>
             {/* trying fetch from backend */}
             <div className='flex overflow-x-auto text-yellow-500 '>
-                {nowShowing?.results?.map((film) =>(
+                {upcoming?.results?.map((film) =>(
                     <div className='flex-1 flex flex-col items-center border-2 border-zinc-900 rounded-lg p-8 mr-6'>
-                    <img className='mb-6' src={"http://localhost:8888/assets/uploads/".concat(film.picture)} alt="The Witchec"/>
-                    <h4 className='font-bold text-[18px] mb-2'> {film.titleMovie}</h4>
+                    <img className='mb-6 w-40 h-60 ' src={"http://localhost:8888/assets/uploads/".concat(film.picture)} alt="The Witchec"/>
+                    <h4 className='font-bold text-[18px] mb-2 text-center h-20'> {film.titleMovie}</h4>
                     <p className='text-[14px] text-center mb-6 h-[50px]'>{film.genre}</p>
                     <Link to='/'>
                         <button className='border-2 border-yellow-500 rounded-lg py-1 px-9'>Details</button>

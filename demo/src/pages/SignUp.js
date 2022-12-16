@@ -1,6 +1,33 @@
-import { Link } from 'react-router-dom'
+import axios from 'axios'
+import { Link, useNavigate } from 'react-router-dom'
 
 const SignUp = () => {
+    const navigate = useNavigate()
+
+
+    const signUp = (event) =>{
+        event.preventDefault()
+        const firstNameForm = event.target.firstName.value
+        const lastNameForm = event.target.lastName.value
+        const phoneForm = event.target.phone.value
+        const emailForm = event.target.email.value
+        const passwordForm = event.target.password.value
+
+        const registerForm = async ()=>{
+            await axios.post('http://localhost:8888/auth/register', {
+                fullName: firstNameForm,
+                lastName: lastNameForm,
+                email: emailForm,
+                password: passwordForm,
+                phone: phoneForm
+            })
+        }
+
+        registerForm()
+        navigate('/signin')
+    }
+
+
   return (
     <div className='h-screen flex'>
             <div className="flex-[0.7] flex  bg-logo-sign bg-cover text-black ">           
@@ -15,7 +42,7 @@ const SignUp = () => {
                     <p>Fill your additional details</p>
                     <div className='hidden' id="notif-signup">Fields can not empty</div>
                 </div>
-                <form className='mb-8' id="form-signup" >
+                <form onSubmit={signUp} className='mb-8' id="form-signup" >
                     <div className='flex flex-col mb-3'>
                         <label className='mb-2.5 text-yellow-500' for="firstName">First Name</label>
                         <input className='p-2 rounded-md text-black' type="text" name="firstName" id="firstName" placeholder="Write your First Name"/>

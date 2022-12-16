@@ -7,7 +7,10 @@ module.exports = {
     extend: {
       backgroundImage:{
         'logo-sign': "url('/src/asset/images/background2.jpg')"
-      }      
+      },
+      gridTemplateRows: {
+        '8': 'repeat(8, 1fr)'
+      }    
     },
   },
   plugins: [],

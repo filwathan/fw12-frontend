@@ -1,23 +1,18 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React from "react";
+import {Provider} from 'react-redux'
+import {PersistGate} from 'redux-persist/lib/integration/react'
 
-import SignIn from "./pages/SignIn";
-import SignUp from "./pages/SignUp";
-import ForgotPassword from "./pages/ForgotPassword";
-import ResetPassword from "./pages/ResetPassword";
-import Homepage from "./pages/Homepage";
+import {store, persistor} from './redux/store'
 
-const App = ()=>{
+import Main from './pages/Main'
+
+function App () {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/forgotpassword" element={<ForgotPassword />} />
-        <Route path="/resetpassword" element={<ResetPassword />} />
-        <Route path="/" element={<Homepage />} />
-      </Routes>      
-    </BrowserRouter>
-  )
+  <Provider store={store}>
+    <PersistGate persistor={persistor}>
+      <Main />    
+    </PersistGate>
+  </Provider>)
 }
 
-export default App;
+export default App
