@@ -4,33 +4,34 @@ import {useNavigate} from "react-router-dom"
 
 import {useSelector} from 'react-redux'
 
-// import {login as loginAction} from '../redux/reducers/auth'
 import {loginAction} from '../redux/actions/auth'
+
+import {Formik, Form, Field} from 'formik';
+import * as Yup from 'yup';
+import YupPassword from 'yup-password';
+YupPassword(Yup);
+
+const loginSchema = Yup.object({
+    email: Yup.string().email('Invalid email address').required('Required'),
+    password: Yup.string()
+      .password()
+      .minUppercase(1, 'min have 1 capital character')
+      .minNumbers(1, 'min have 1 number')
+      .minSymbols(1, 'min have 1 symbol')
+      .required('Required'),
+  });
 
 function SignIn(){
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    const message = useSelector((state) => state.auth.token)
+    const message = useSelector((state) => state.auth.message)
+    console.log(message)
 
-    const login = (event) =>{
-        event.preventDefault()
-        const email = event.target.email.value
-        const password = event.target.password.value
-        
-        const callback = () =>{
-        //     try{
-        //     console.log("masuk ke try")
-        //          // original
-        //     }
-            
-        //     catch(err){
-        //         console.log("masuk ke catch")
-        //     }
-        // }
-        }
-        dispatch(loginAction({email, password, callback}))
-        navigate('/')
+    const login = event =>{
+        const email = event.email
+        const password = event.password
+        dispatch(loginAction({email, password, cb: () => navigate('/') }))
     }
 
     return (
@@ -46,24 +47,42 @@ function SignIn(){
                     <h3 className='text-yellow-500 text-[48px] font-bold mb-2' >Sign In</h3>
                     <p>Sign in with your data that you entered during your registration</p>
                     {/* <div className='hidden' id="notif-signup">Email or Password is wrong</div> */}
-                    {message?
-                    <div id="notif-signup">Email or Password is wrong</div> :
-                    <div className='hidden' id="notif-signup">Email or Password is wrong</div>
+                    {!message?
+                    <div id="notif-signup"></div> :
+                    <div className='text-red-500' id="notif-signup">{message}</div>
                     }
                 </div>
-                <form onSubmit={login} className='mb-8' id="form-signin" >
-                    <div className='flex flex-col mb-3'>
-                        <label className='mb-2.5 text-yellow-500' for="email">Email</label>
-                        <input className='p-2 rounded-md text-black' type="text" name="email" id="email" placeholder="Write your email"/>
-                    </div>
-                    <div className='flex flex-col mb-8'>
-                        <label className='mb-2.5 text-yellow-500' for="password">Password</label>
-                        <input className='p-2 rounded-md text-black' type="password" name="password" id="password" placeholder="Write your password"/>
-                    </div>
-                    <div className='text-center'>
-                        <button className='rounded-md text-white bg-yellow-500 w-full h-[40px]'>Sign In</button>
-                    </div>                    
-                </form>
+                <Formik 
+                    initialValues={{
+                        email: '',
+                        password: '',
+                    }}
+                    validationSchema={loginSchema}
+                    onSubmit={login}
+                >
+                    {({ errors, touched }) => (
+                        <Form className='mb-8' id="form-signin" >
+                            <div className='flex flex-col mb-3'>
+                                <label className='mb-2.5 text-yellow-500' htmlFor="email">Email</label>
+                                <Field className='p-2 rounded-md text-black' type="text" name="email" id="email" placeholder="Write your email"/>
+                                {errors.email && touched.email ? (
+                                    <div className="text-red-500">{errors.email}</div>
+                                ) : null}
+                            </div>
+                            <div className='flex flex-col mb-8'>
+                                <label className='mb-2.5 text-yellow-500' htmlFor="password">Password</label>
+                                <Field className='p-2 rounded-md text-black' type="password" name="password" id="password" placeholder="Write your password"/>
+                                {errors.password && touched.password ? (
+                                    <div className="text-red-500">{errors.password}</div>
+                                ) : null}
+                            </div>
+                            <div className='text-center'>
+                                <button type='submit' className='rounded-md text-white bg-yellow-500 w-full h-[40px]'>Sign In</button>
+                            </div>                    
+                        </Form>
+                    )}
+                </Formik>
+                
                 <div className='text-center'>
                     <div>
                         <span>Forgot your password? </span>

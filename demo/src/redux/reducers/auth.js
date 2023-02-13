@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit'
 
-import { loginAction } from '../actions/auth'
+import { loginAction, registerAction } from '../actions/auth'
 
 const initialState = {
     message: null,
@@ -11,29 +11,30 @@ const authReducer = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        // login: (state, {payload})=>{
-        //     state.token = payload
-        // }
-        logout: (state, action)=>{
-            state = initialState;
+        logout: ()=>{
+            return initialState;
         },
     },
-    extraReducers: (build) =>{console.log("masuk ke extra redux")
-        build.addCase(loginAction.fulfilled, (state, {payload})=>{
-            // state.message = payload.message
-            console.log("ini masuk fullfilled")
-            // console.log(payload)
-            state.token = payload.token
+    extraReducers: (build) =>{
+        build.addCase(loginAction.fulfilled, (state, action)=>{
+            state.message = null
+            state.token = action.payload
         })        
-        // build.addCase(loginAction.rejected, (state, {payload})=>{
-        //     state.message = payload.message
-        //     console.log("ini masuk rejected")
-        //     // console.log(payload)
-        //     // state.token = payload.token
-        // })        
+        build.addCase(loginAction.rejected, (state, action)=>{
+            state.message = action.payload
+            state.token = null
+        })        
+        build.addCase(registerAction.fulfilled, (state, action)=>{
+            state.message = null
+            state.token = action.payload
+        })        
+        build.addCase(registerAction.rejected, (state, action)=>{
+            state.message = action.payload
+            state.token = null
+        })        
     } 
 })
 
-export const {login} = authReducer.actions
+export const {logout: logoutAction} = authReducer.actions
 
 export default authReducer.reducer;

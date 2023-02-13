@@ -1,11 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
-
+import http from '../helpers/http';
+import spiderman from '../asset/images/spiderman.png'
 
 const Homepage = () => {
+    const navigate = useNavigate()
     const [nowShowing, setNowShowing] = React.useState({});
     React.useEffect(()=>{
         getNowShowing().then((data) =>{
@@ -14,7 +16,7 @@ const Homepage = () => {
     },[])
 
     const getNowShowing = async () =>{
-        const {data} = await axios.get('http://localhost:8888/movies/nowShowingMovie');
+        const {data} = await http().get('movies/nowShowingMovie');
         return data
     }
 
@@ -26,9 +28,10 @@ const Homepage = () => {
     },[])
 
     const getUpcoming = async () =>{
-        const {data} = await axios.get('http://localhost:8888/movies/upcomingMovie');
+        const {data} = await http().get('movies/upcomingMovie');
         return data
     }
+
 
 
   return (<>
@@ -58,15 +61,13 @@ const Homepage = () => {
                 </div>
             </div>
             <div className='flex text-yellow-500 text-center'>                
-                {nowShowing?.results?.map((film) =>(
-                    <div className='group/upcoming border-2 border-black p-8 rounded-lg mr-6 '>
-                        <img className='w-40 h-60' src={"http://localhost:8888/assets/uploads/".concat(film.picture)} alt="The Witchec"/>
+                {nowShowing?.results?.map((film, index) =>(
+                    <div key={index} className='group/upcoming border-2 border-black p-8 rounded-lg mr-6 '>
+                        <img className='w-40 h-60' src={film.picture || spiderman} alt="The Witchec"/>
                         <div className='hidden group-hover/upcoming:block group-hover/upcoming:static'>
                             <h4 className='font-bold text-[18px] mb-2'> {film.titleMovie}</h4>
                             <p className='text-[14px] text-center mb-6 h-[50px]'>{film.genre}</p>
-                            <Link to='/'>
-                                <button className='border-2 border-yellow-500 rounded-lg py-1 px-9'>Details</button>
-                            </Link>
+                            <button onClick={() => {navigate('/moviedetails/'+ film.idMovie )}} className='border-2 border-yellow-500 rounded-lg py-1 px-9'>Details</button>                            
                         </div>
                     </div>
                 ))}                
@@ -98,14 +99,12 @@ const Homepage = () => {
             </div>
             {/* trying fetch from backend */}
             <div className='flex overflow-x-auto text-yellow-500 '>
-                {upcoming?.results?.map((film) =>(
-                    <div className='flex-1 flex flex-col items-center border-2 border-zinc-900 rounded-lg p-8 mr-6'>
-                    <img className='mb-6 w-40 h-60 ' src={"http://localhost:8888/assets/uploads/".concat(film.picture)} alt="The Witchec"/>
-                    <h4 className='font-bold text-[18px] mb-2 text-center h-20'> {film.titleMovie}</h4>
-                    <p className='text-[14px] text-center mb-6 h-[50px]'>{film.genre}</p>
-                    <Link to='/'>
-                        <button className='border-2 border-yellow-500 rounded-lg py-1 px-9'>Details</button>
-                    </Link>
+                {upcoming?.results?.map((film, index) =>(
+                    <div key={index} className='flex-1 flex flex-col items-center border-2 border-zinc-900 rounded-lg p-8 mr-6'>
+                        <img className='mb-6 w-40 h-60 ' src={film.picture || spiderman} alt="The Witchec"/>
+                        <h4 className='font-bold text-[18px] mb-2 text-center h-20'> {film.titleMovie}</h4>
+                        <p className='text-[14px] text-center mb-6 h-[50px]'>{film.genre}</p>
+                        <button onClick={() => {navigate('/moviedetails/'+ film.idMovie )}} className='border-2 border-yellow-500 rounded-lg py-1 px-9'>Details</button>                        
                     </div>
                 ))}
                 {/* <div className='flex-1 flex flex-col items-center border-2 border-zinc-900 rounded-lg p-8 mr-6 w-[220px] h-[450]'>

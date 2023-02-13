@@ -1,22 +1,30 @@
 import React from 'react'
-import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import http from '../helpers/http'
+
+import {Formik, Form, Field} from 'formik';
+import * as Yup from 'yup';
+import YupPassword from 'yup-password';
+YupPassword(Yup);
+
+const forgotPasswordSchema = Yup.object({
+    email: Yup.string().email('Invalid email address').required('Required'),
+  });
 
 const ForgotPassword = () => {
     const navigate = useNavigate()
+    const [validasi, setValidasi] = React.useState(null)
     
-    const forgotPassword = (event) =>{
-        event.preventDefault()
-        const emailForm = event.target.email.value
-
-        const forgotPassowrdForm = async ()=>{
-            await axios.post('http://localhost:8888/auth/register', {                
-                email: emailForm,
-            })
+    const forgotPassword = async (event) =>{
+        setValidasi()
+        try {
+            const {data} = await http().post('auth/forgotPassword', {...event})
+            navigate('/resetpassword/'+ event.email)
+            console.log(data.results.message)
+        } catch (error) {
+            console.log(error.response.data.message)
+            setValidasi(error.response.data.message)
         }
-
-        forgotPassowrdForm()
-        navigate('/resetpassword')
     }
   return (
     <div className='h-screen flex'>
@@ -52,17 +60,33 @@ const ForgotPassword = () => {
                 <div className='pt-12 mb-10' id='notice-form-head'>
                     <h3 className='text-yellow-500 text-[26px] font-bold mb-2' >Fill your complete email</h3>
                     <p>we'll send a link to your email shortly</p>
-                    <div className='hidden' id='notif-signup'>Email not registed, please Sign Up</div>
+                    {validasi &&
+                    <div className='text-red-500' id="notif-signup">{validasi}</div>
+                    }
                 </div>
-                <form onSubmit={forgotPassword} className='mb-8' id='form-signin' >
-                    <div className='flex flex-col mb-5'>
-                        <label className='mb-2.5 text-yellow-500' for='email'>Email</label>
-                        <input className='p-2 rounded-md text-black' type='text' name='email' id='email' placeholder='Write your email'/>
-                    </div>                    
-                    <div className='text-center'>
-                        <button className='rounded-md text-white bg-yellow-500 w-full h-[40px]'>Send</button>
-                    </div>                    
-                </form>                
+                <Formik
+                    validationSchema={forgotPasswordSchema}
+                    onSubmit={forgotPassword}
+                    initialValues={{
+                    email: '',
+                }}>
+                    {({ errors, touched }) => (
+                        <Form className='mb-8' id='form-signin' >
+                            <div className='flex flex-col mb-5'>
+                                <label className='mb-2.5 text-yellow-500' htmlFor='email'>Email</label>
+                                <Field className='p-2 rounded-md text-black' type='text' name='email' id='email' placeholder='Write your email'/>
+                                {errors.email && touched.email ? (
+                                        <div className="text-red-500">{errors.email}</div>
+                                    ) : null}
+                            </div>                    
+                            <div className='text-center'>
+                                <button type='submit' className='rounded-md text-white bg-yellow-500 w-full h-[40px]'>Send</button>
+                            </div>                    
+                        </Form>
+                    )}
+
+                </Formik>
+                                
             </div>
         </div>
   )

@@ -368,11 +368,11 @@
 }
 
 .tickets{ 
-@apply mt-0 mr-8 mb-8 ml-0  flex flex-wrap flex-1 ;
+@apply w-[300px] mt-0 mr-8 mb-8 ml-0 flex flex-wrap;
 }
 
 .choice-ticket{ 
-@apply bg-black rounded-lg     flex flex-1 flex-wrap flex-col ;
+@apply bg-black rounded-lg flex flex-1 flex-wrap flex-col ;
 }
 
 .bracnd-ticket{ 
@@ -384,7 +384,7 @@
 }
 
 .bracnd-ticket>div:nth-child(1){ 
-@apply  flex justify-center items-center ;
+@apply flex justify-center items-center ;
 }
 
 .bracnd-ticket img{ 
@@ -400,7 +400,7 @@
 }
 
 .times{ 
-@apply     text-yellow-700 text-[12px] font-bold pt-4 pr-7 pb-0 pl-7  grid-cols-4 gap-x-1 gap-y-4 /* display: grid grid-template-columns: repeat(4, 25%) grid-gap: 5px 16px */ ;
+@apply flex flex-wrap text-yellow-700 text-[12px] font-bold pt-4 pr-7 pb-0 pl-7  grid-cols-4 gap-x-1 gap-y-4 /* display: grid grid-template-columns: repeat(4, 25%) grid-gap: 5px 16px */ ;
 }
 
 .price{ 
@@ -531,18 +531,27 @@
 }
 
 .left-grid-seat{ 
-@apply flex-1  grid grid-cols-[30px_30px_30px_30px_30px_30px_30px_30px] gap-1 /* display: grid grid-template-columns: repeat(8, 30px)  grid-template-rows: repeat(8, 30px) gap: 5px   */  ;
+@apply flex-1 text-center  grid grid-cols-[30px_30px_30px_30px_30px_30px_30px_30px] gap-1 ;
 } 
+/* .left-grid-seat{ 
+@apply flex-1  grid grid-cols-[30px_30px_30px_30px_30px_30px_30px_30px] gap-1 ;
+}  */
 
 .right-grid-seat{ 
-@apply justify-end grid grid-cols-[30px_30px_30px_30px_30px_30px_30px] grid-rows-[30px_30px_30px_30px_30px_30px_30px_30px] gap-1 /* display: grid grid-template-columns: repeat(7, 30px)  grid-template-rows: repeat(8, 30px) gap: 5px   */  ;
+@apply text-center justify-end grid grid-cols-[30px_30px_30px_30px_30px_30px_30px_30px] gap-1 ;
 } 
 
 .left-grid-seat>div{ 
-@apply bg-zinc-900 hover:bg-yellow-500 rounded text-yellow-500 ;
+@apply grid gap-1;
+}
+.left-grid-seat>div>div{ 
+@apply w-[30px] h-[30px] bg-zinc-900 hover:bg-yellow-700 rounded text-yellow-500 ;
 }
 .right-grid-seat>div{ 
-@apply bg-zinc-900 hover:bg-yellow-500 rounded text-yellow-500 ;
+@apply grid gap-1;
+}
+.right-grid-seat>div>div{ 
+@apply w-[30px] h-[30px] bg-zinc-900 hover:bg-yellow-700 rounded text-yellow-500 ;
 }
 
 .grid-seat .seat-name{ 
@@ -669,7 +678,7 @@
 }
 
 .overlay-white{ 
-@apply bg-black rounded-2xl pt-10 pr-8 pb-10 pl-8  text-[16px] ;
+@apply bg-black rounded-2xl pr-8 pl-8 text-[16px] ;
 }
 .overlay-white-br{ 
 @apply bg-black rounded-2xl text-[16px] ;
@@ -677,14 +686,14 @@
 
 
 .tab-page.overlay-white{ 
-@apply pt-6 pr-8 pb-6 pl-8 flex text-yellow-700 text-[18px] font-normal mb-12 ;
+@apply pr-8 pl-8 flex text-yellow-700 text-[18px] font-normal mb-12 ;
 }
 
 .tab-page.overlay-white>a{ 
 @apply no-underline ;
 }
 
-.tab-page-profil.active-tab{ 
+.active-tab{ 
 @apply border-yellow-700 ;
 }
 
@@ -768,7 +777,7 @@
 }
 
 .history-film>div:nth-child(1)>div:nth-child(1){ 
-@apply text-zinc-900 text-[14px] ;
+@apply text-yellow-700 text-[14px] ;
 }
 .history-film>div:nth-child(1)>div:nth-child(2){ 
 @apply text-yellow-500 font-bold text-[24px] ;
@@ -782,8 +791,8 @@
 @apply bg-yellow-500 rounded border-0 w-[196px] h-[40px] text-black font-bold ;
 }
 
-.btn-history-active.non-active{ 
-@apply bg-yellow-500 rounded border-0 w-[196px] h-[40px] text-black font-bold ;
+.btn-history-deactive{ 
+@apply bg-zinc-900 rounded border-0 w-[196px] h-[40px] text-yellow-500 font-bold ;
 }
 
 .btn-history>div:nth-child(2)>a{ 

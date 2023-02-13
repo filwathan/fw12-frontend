@@ -21,14 +21,14 @@ const Main = ()=>{
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
-        <Route path="/resetpassword" element={<ResetPassword />} />
+        <Route path="/resetpassword/:email" element={<ResetPassword />} />
         <Route path="/viewall" element={<ViewAll />} />
         <Route path="/moviedetails/:idMovie" element={<MovieDetails />} />
         <Route path="/orderpage" element={<OrderPage />} />
         <Route path="/paymentpage" element={<PaymentPage />} />
         <Route path="/profilpage" element={<ProfilPage />} />
         <Route path="/orderhistorypage" element={<OrderHistoryPage />} />
-        <Route path="/ticketresult" element={<TicketResult />} />
+        <Route path="/ticketresult/:idOrder" element={<TicketResult />} />
         <Route path="/managemoviepage" element={<ManageMoviePage />} />
         <Route path="/" element={<Homepage />} />
       </Routes>      

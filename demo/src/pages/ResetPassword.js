@@ -1,27 +1,65 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import { useNavigate, useParams } from 'react-router-dom'
+import http from '../helpers/http'
+
+import {Formik, Form, Field} from 'formik';
+import * as Yup from 'yup';
+import YupPassword from 'yup-password';
+YupPassword(Yup);
+
+const resetPasswordSchema = Yup.object({
+    password: Yup.string()
+      .password()
+      .minUppercase(1, 'min have 1 capital character')
+      .minNumbers(1, 'min have 1 number')
+      .minSymbols(1, 'min have 1 symbol')
+      .required('Required'),
+    confirmPassword: Yup.string()
+      .password()
+      .minUppercase(1, 'min have 1 capital character')
+      .minNumbers(1, 'min have 1 number')
+      .minSymbols(1, 'min have 1 symbol')
+      .required('Required'),
+    code: Yup.string().required('Required'),
+  });
 
 const ResetPassword = () => {
     const navigate = useNavigate()
+    const params = useParams()
+    const [validasi, setValidasi] = React.useState(null)
     
-    const resetPassword = (event) =>{
-        event.preventDefault()
-        const passwordForm = event.target.password.value
-        const confirmPasswordForm = event.target.confirmPassword.value
-        const codeForm = 123
-
-        const resetPasswordForm = async ()=>{
-            await axios.post('http://localhost:8888/auth/register', {                
-                password: passwordForm,
-                confirmPassword: confirmPasswordForm,
-                code: codeForm,
-            })
+    const resetPassword = async (event) =>{
+        setValidasi()
+        const form = {
+            ...event
         }
-
-        resetPasswordForm()
-        navigate('/signin')
+        form.email = params.email
+        console.log(form)
+        try {
+            const {data} = await http().post('auth/resetPassword', form)
+            navigate('/signin')
+        } catch (error) {
+            console.log(error.response.data.message)
+            setValidasi(error.response.data.message)
+        }
     }
+    
+    // const resetPassword = (event) =>{
+    //     const passwordForm = event.password
+    //     const confirmPasswordForm = event.confirmPassword
+    //     const codeForm = event.code
+
+    //     const resetPasswordForm = async ()=>{
+    //         await http().post('auth/register', {                
+    //             password: passwordForm,
+    //             confirmPassword: confirmPasswordForm,
+    //             code: codeForm,
+    //         })
+    //     }
+
+    //     resetPasswordForm()
+    //     navigate('/signin')
+    // }
     
   return (
     <div className='h-screen flex'>
@@ -59,19 +97,44 @@ const ResetPassword = () => {
                     <p>set your new password</p>
                     <div className='hidden' id="notif-signup">password and confirm password must same</div>
                 </div>
-                <form onSubmit={resetPassword} className='mb-8' id="form-signin" >                   
-                    <div className='flex flex-col mb-8'>
-                        <label className='mb-2.5 text-yellow-500' for="password">Password</label>
-                        <input className='p-2 rounded-md text-black' type="password" name="password" id="password" placeholder="Write your password"/>
-                    </div>
-                    <div className='flex flex-col mb-8'>
-                        <label className='mb-2.5 text-yellow-500' for="confirmPassword">Confirm Password</label>
-                        <input className='p-2 rounded-md text-black' type="password" name="confirmPassword" id="confirmPassword" placeholder="Write your Confirm Password"/>
-                    </div>
-                    <div className='text-center'>
-                        <button className='rounded-md text-white bg-yellow-500 w-full h-[40px]'>Send</button>
-                    </div>                    
-                </form>                
+                <Formik
+                    validationSchema={resetPasswordSchema}
+                    onSubmit={resetPassword}
+                    initialValues={{
+                        password: '',
+                        confirmPassword: '',
+                        code: '',
+                }}>
+                    {({ errors, touched }) => (
+                        <Form className='mb-8' id="form-signin" >                   
+                            <div className='flex flex-col mb-8'>
+                                <label className='mb-2.5 text-yellow-500' htmlFor="code">Code</label>
+                                <Field className='p-2 rounded-md text-black' type="text" name="code" id="code" placeholder="Write your code"/>
+                                {errors.code && touched.code ? (
+                                            <div className="text-red-500">{errors.code}</div>
+                                        ) : null}
+                            </div>
+                            <div className='flex flex-col mb-8'>
+                                <label className='mb-2.5 text-yellow-500' htmlFor="password">Password</label>
+                                <Field className='p-2 rounded-md text-black' type="password" name="password" id="password" placeholder="Write your password"/>
+                                {errors.password && touched.password ? (
+                                            <div className="text-red-500">{errors.password}</div>
+                                        ) : null}
+                            </div>
+                            <div className='flex flex-col mb-8'>
+                                <label className='mb-2.5 text-yellow-500' htmlFor="confirmPassword">Confirm Password</label>
+                                <Field className='p-2 rounded-md text-black' type="password" name="confirmPassword" id="confirmPassword" placeholder="Write your Confirm Password"/>
+                                {errors.confirmPassword && touched.confirmPassword ? (
+                                            <div className="text-red-500">{errors.confirmPassword}</div>
+                                        ) : null}
+                            </div>
+                            <div className='text-center'>
+                                <button type='submit' className='rounded-md text-white bg-yellow-500 w-full h-[40px]'>Send</button>
+                            </div>                    
+                        </Form> 
+                    )}
+                </Formik>
+                               
             </div>
         </div>
   )
