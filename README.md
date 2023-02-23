@@ -28,11 +28,17 @@ To start the app in development mode, run the following command:
 npm start
 ```
 
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
 
 ## Features
 The FW12 Pengennonton app allows users to:
 
-Browse movies and TV shows
+- Browse movies
 - View details about each movie, including genre, casts, producers, synopsis.
 - Search for movies by title,
 - Order ticket Cinema in your city
+
+## Deploy on Vercel
+you can try this app in [https://fw12-frontend-seven.vercel.app/](https://fw12-frontend-seven.vercel.app/)
+
